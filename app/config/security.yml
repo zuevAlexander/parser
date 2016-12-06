@@ -1,0 +1,19 @@
+security:
+    encoders:
+        CoreBundle\Entity\User:
+            algorithm: md5
+
+    providers:
+        webservice:
+            id: app.webservice_user_provider
+
+    firewalls:
+        dev:
+            pattern: ^/api/doc
+            security: false
+
+        main:
+            pattern:    ^/api
+            guard:
+                authenticators:
+                    - app.token_authenticator

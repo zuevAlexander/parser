@@ -1,0 +1,8 @@
+services:
+    app.webservice_user_provider:
+        class: AppBundle\Security\User\WebserviceUserProvider
+        arguments:
+            - "@doctrine"
+
+    app.token_authenticator:
+        class: AppBundle\Security\TokenAuthenticator

@@ -1,0 +1,30 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+api_channel:
+    resource: "@AppBundle/Controller/ChannelController.php"
+    type:     rest
+    prefix:   /api
+    defaults: {_format: json}
+
+api_user:
+    type: rest
+    prefix:   /api
+    resource: "@AppBundle/Controller/UserController.php"
+
+api_feed:
+    type: rest
+    prefix:   /api
+    resource: "@AppBundle/Controller/FeedController.php"
+
+api_admin:
+    type: rest
+    resource: "@AppBundle/Controller/DefaultController.php"
+
+rssatom:
+    resource: "@DebrilRssAtomBundle/Resources/config/routing.xml"

@@ -1,0 +1,23 @@
+#services:
+#    core.example:
+#        class: CoreBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+services:
+    core.handler.user:
+        class: CoreBundle\Handler\UserHandler
+        arguments:
+          - "@doctrine"
+
+    core.handler.channel:
+        class: CoreBundle\Handler\ChannelHandler
+        arguments: ["@doctrine", "@app.webservice_user_provider"]
+
+    core.handler.feed:
+        class: CoreBundle\Handler\FeedHandler
+        arguments:
+          - "@doctrine"
+
+    core.service.parser:
+        class: CoreBundle\Service\ParserFeedService
+        arguments: ["@core.handler.feed", "@core.handler.channel", "@feedIo"]
